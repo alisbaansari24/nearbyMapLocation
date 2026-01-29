@@ -78,10 +78,13 @@ android {
     compileSdk rootProject.ext.compileSdkVersion
 
     namespace "com.nearbylocation"
+    def mapsApiKey = project.properties['MAPS_API_KEY'] ?: ""
+
     defaultConfig {
         applicationId "com.nearbylocation"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        resValue "string", "google_maps_api_key", mapsApiKey
         versionCode 1
         versionName "1.0"
     }
