@@ -59,37 +59,37 @@ export default function HomePage() {
   }
   const calculateDistance = async (originLat, originLng, destLat, destLng) => {
     try {
-      // ✅ API KEY as normal variable
+      
       const GOOGLE_MAPS_API_KEY = "AIzaSyA_dgbqqESEGelLH6a1ItkEiZdnVFh9UIw";
 
-      console.log('API KEY 👉', GOOGLE_MAPS_API_KEY);
+      console.log('API KEy', GOOGLE_MAPS_API_KEY);
 
       const url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${originLat},${originLng}&destinations=${destLat},${destLng}&mode=driving&units=metric&key=${GOOGLE_MAPS_API_KEY}`;
 
-      console.log('DISTANCE MATRIX URL 👉', url);
+      
 
       const response = await fetch(url);
       const data = await response.json();
 
-      console.log('Distance Matrix response 👉', data);
+      console.log('Distance Matrix response', data);
 
       if (
         data.status === 'OK' &&
         data.rows?.[0]?.elements?.[0]?.status === 'OK'
       ) {
-        return data.rows[0].elements[0].distance.text; // e.g. "12.4 km"
+        return data.rows[0].elements[0].distance.text; 
       }
 
       return 'N/A';
     } catch (error) {
-      console.log('Distance API error 👉', error);
+      console.log('Distance API error ', error);
       return 'Error';
     }
   };
 
 
 
-  // 🗺 MAP TAP HANDLER
+  // MAP TAP HANDLER
   const handleMapPress = async e => {
     if (!currentLat || !currentLng) return;
 
